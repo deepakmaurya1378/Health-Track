@@ -1,0 +1,26 @@
+<div class="form-container">
+  <h2>Add Workout Record</h2>
+
+  <label for="username">Username:</label>
+  <input type="text" id="username" [(ngModel)]="username" placeholder="Enter your name" required />
+
+  <label for="workout">Workout Type:</label>
+  <select id="workout" [(ngModel)]="workoutType" (change)="onWorkoutTypeChange()">
+    <option value="">Select Workout</option>
+    <option value="Running">Running</option>
+    <option value="Cycling">Cycling</option>
+    <option value="Swimming">Swimming</option>
+    <option value="Yoga">Yoga</option>
+    <option value="Other">Other (Please specify)</option>
+  </select>
+
+  <div *ngIf="workoutType === 'Other'">
+    <label for="customWorkout">Custom Workout Type:</label>
+    <input type="text" id="customWorkout" [(ngModel)]="customWorkout" placeholder="Enter your workout type" />
+  </div>
+
+  <label for="duration">Time Duration (minutes):</label>
+  <input type="number" id="duration" [(ngModel)]="duration" placeholder="Enter duration" required />
+
+  <button (click)="addUser()">Add Workout</button>
+</div>

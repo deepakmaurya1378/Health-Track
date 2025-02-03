@@ -1,0 +1,19 @@
+<div class="user-chart-container">
+  <div class="user-list">
+    <h3>Users</h3>
+    <ul>
+      <li *ngFor="let user of userData" (click)="selectUser(user)" [class.active]="selectedUser.id === user.id">
+        {{ user.name }}
+      </li>
+    </ul>
+  </div>
+
+  <div class="chart-container">
+    <h3>{{ selectedUser.name }}'s Workouts</h3>
+    <canvas baseChart
+      [data]="chartData"
+      [options]="chartOptions"
+      [type]="chartType">
+    </canvas>
+  </div>
+</div>

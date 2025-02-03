@@ -1,29 +1,37 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
+      imports: [ AppComponent],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: { params: of({}) }
+        }
+      ]
     }).compileComponents();
   });
 
-  it('should create the app', () => {
+  it('should create the app component', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'Todo-list' title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('Todo-list');
-  });
-
-  it('should render title', () => {
+  it('render the HeaderComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, Todo-list');
+    expect(compiled.querySelector('app-header')).toBeTruthy();
+  });
+
+  it('correct title', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app.title).toEqual('Health Tracker');
   });
 });
