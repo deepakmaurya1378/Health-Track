@@ -10,7 +10,7 @@
     <div class="filter-item">
       <label for="workoutType">Filter by Workout Type:</label>
       <select id="workoutType" [(ngModel)]="selectedWorkoutType">
-        <option value="">All Workout Types</option>
+        <option value="">All</option>
         <option *ngFor="let type of workoutTypes" [value]="type">{{ type }}</option>
       </select>
     </div>
@@ -19,7 +19,7 @@
   <div *ngIf="paginatedUsers.length > 0; else noUsers">
     <div class="user-list">
       <div *ngFor="let user of paginatedUsers" class="user-card">
-        <h4>{{ user.name }}'s Workouts</h4>
+        <h4>{{ user.name }}'s Workouts Details</h4>
         <ul>
           <li *ngFor="let workout of user.workouts">
             {{ workout.type }} for {{ workout.minutes }} minutes
